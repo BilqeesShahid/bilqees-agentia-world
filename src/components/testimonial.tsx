@@ -29,7 +29,7 @@ export function Testimonials() {
 
   return (
     <section className="w-full py-20 bg-gradient-to-b from-gray-950 to-purple-950">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 md:px-8">
         <h2 className="text-4xl font-bold text-center mb-12 text-cyan-400">What Our Clients Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
