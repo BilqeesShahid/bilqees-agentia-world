@@ -1,33 +1,27 @@
-"use client"
+"use client";
 import { Chart } from "chart.js/auto";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function PerformanceGraph() {
-  // Define the type of chartRef as RefObject<HTMLCanvasElement>
   const chartRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Ensure the canvas element is available
     if (!chartRef.current) {
       console.error("Canvas element is not available.");
       return;
     }
 
     const ctx = chartRef.current.getContext("2d");
-
-    // Ensure the context is available
     if (!ctx) {
       console.error("Canvas context is not available.");
       return;
     }
 
-    // Create a gradient for the background
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, "rgba(6, 182, 212, 0.2)");
     gradient.addColorStop(1, "rgba(6, 182, 212, 0)");
 
-    // Initialize the chart
     const chart = new Chart(ctx, {
       type: "line",
       data: {
@@ -59,7 +53,6 @@ export default function PerformanceGraph() {
       },
     });
 
-    // Cleanup on unmount
     return () => chart.destroy();
   }, []);
 
@@ -70,7 +63,7 @@ export default function PerformanceGraph() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 md:px-8">
         <h2 className="text-3xl font-bold text-center mb-12 text-cyan-400">
           Real-Time Performance Graph
         </h2>
